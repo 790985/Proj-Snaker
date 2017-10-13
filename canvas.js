@@ -2,7 +2,7 @@ window.onload = init;
 var canvas;
 var ctx;
 var movers;
-
+var orbiter;
 function init(){
   canvas = document.getElementById('cnv')
   canvas.width = window.innerWidth;
@@ -19,6 +19,7 @@ function animate(){
   requestAnimationFrame(animate);
   ctx.clearRect(0,0,canvas.width, canvas.height);
     movers.update();
+    orbiter.update();
 
 }
 
@@ -35,6 +36,7 @@ function loadMovers(numMovers){
         ctx.strokeStyle = randomColor();
         ctx.fillStyle = randomColor();
         movers = new Mover(loc, vel, acc, radius, randomColor());
+        orbiter = new Orbiter(loc, vel, randomColor(),movers, radius);
 }
 
 function randomColor(){

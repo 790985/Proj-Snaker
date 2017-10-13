@@ -45,8 +45,8 @@ JSVector.angleBetween = function(vec1, vec2){
 	var a2 = vec2.getDirection();
 	return a2 - a1;
 }
-JSVector.prototype.setDirection = function(mag){
-	angle = this.getDirection();
+JSVector.prototype.setDirection = function(angle){
+	mag = this.getMag();
 	this.x = mag * Math.cos(angle);
 	this.y = mag * Math.sin(angle);
 }
