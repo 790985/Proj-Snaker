@@ -26,6 +26,7 @@ Orbiter.prototype.render = function(){
     ctx.fillStyle = this.clr;
     ctx.beginPath();
     ctx.arc(this.loc.x, this.loc.y, this.r, Math.PI*2,0,false);
+    ctx.rotate(20*Math.PI/180);
     ctx.stroke();
     ctx.fill();
 }
