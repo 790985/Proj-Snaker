@@ -11,7 +11,6 @@ this.degree = 0;
 }
 Orbiter.prototype.update = function(){
     this.currentAngle = this.currentAngle + this.currentAngleV;
-    this
     //this.loc.y = 2 * PI * ((this.degree+1)/360)
     //if(this.degree <= 360){
     //  this.degree = 0;
