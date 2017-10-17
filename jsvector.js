@@ -11,8 +11,8 @@ JSVector.prototype.getMag = function(){
    return Math.sqrt((this.x*this.x)+(this.y*this.y))
 }
 JSVector.prototype.add = function(vec){
-  this.x += vec.x;
-  this.y += vec.y;
+  this.x += vec.x
+  this.y += vec.y
 }
 JSVector.addGetNew = function(vec1, vec2){
   var x = vec1.x + vec2.x;

@@ -34,6 +34,8 @@ Mover.prototype.update = function(){
   if(this.loc.y >= window.innerHeight - this.len || this.loc.y <= this.len){
      this.vel.y *= -1;
   }
+  //this.vel = this.vel.add(this.acc);
+  //this.acc = this.acc.mult(0.75);
 
   this.render();
 }
