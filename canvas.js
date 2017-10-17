@@ -18,7 +18,9 @@ function init(){
 function animate(){
   requestAnimationFrame(animate);
   ctx.clearRect(0,0,canvas.width, canvas.height);
-    movers.update();
+for(i=0;i < movers.size; i++){
+    movers[i].update();
+  }
     orbiter.update();
 
 }
@@ -35,8 +37,13 @@ function loadMovers(numMovers){
         var acc = new JSVector(0,0);
         ctx.strokeStyle = randomColor();
         ctx.fillStyle = randomColor();
-        movers = new Mover(loc, vel, acc, radius, randomColor());
-        orbiter = new Orbiter(loc, vel, randomColor(),movers, radius);
+          movers.push(new Mover(loc, vel, acc, radius, randomColor()));
+        //movers.push(new Mover(new JSVector(loc.x + 40, loc.y + 40),loc, vel, acc, radius, randomColor()));
+        //movers.push(new Mover(new JSVector(loc.x + 60, loc.y + 60), vel, acc, radius, randomColor()));
+        //movers.push(new Mover(new JSVector(loc.x + 80, loc.y + 80), vel, acc, radius, randomColor()));
+        //movers.push(new Mover(new JSVector(loc.x + 100, loc.y + 100), vel, acc, radius, randomColor()));
+        //orbiter = new Orbiter(loc, vel, randomColor(),movers[0], radius);
+
 }
 
 function randomColor(){
