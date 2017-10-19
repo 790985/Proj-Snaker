@@ -59,7 +59,7 @@ Mover.prototype.accelerate = function(attractLoc, repelLoc){
 
 }
 
-Attractor.prototype.update = function(movers){
+Attractor.prototype.update = function(movers,list){
 
   this.loc.add(this.vel);
   if(this.loc.x >= (window.innerWidth  - this.len)|| this.loc.x <= this.len){
@@ -67,15 +67,23 @@ Attractor.prototype.update = function(movers){
   }
   if(this.loc.y >= window.innerHeight - this.len || this.loc.y <= this.len){
      this.vel.y *= -1;
+  if(this.loc.x + 100 >= movers.loc.x || this.loc.y + 100 >= movers.loc.y){
+    movers.acc.add(new JSVector(0.25,0.25));
   }
-  for(i = 0; i < 99; i++){
-  if(this.loc.x + 5 <= movers[i].loc.x || this.loc.x - 5 >= movers[i].loc.x){
-    movers[i].loc.mult(new JSVector(-2,-2));
-
-  }
-  if(this.loc.x + 5 <= movers[i].loc.y || this.loc.x - 5 >= movers[i].loc.y){
-    movers[i].loc.div(new JSVector(2,2));
-  }
+  //if(this.loc.x >= (window.innerWidth  - this.len)|| this.loc.x <= this.len){
+     //this.vel.x *= -1;
+  //}
+  //if(this.loc.y >= window.innerHeight - this.len || this.loc.y <= this.len){
+  //   this.vel.y *= -1;
+  //}
+  //for(i = 0; i < 99; i++){
+  //if(this.loc.x + 5 <= movers[i].loc.x || this.loc.x - 5 >= movers[i].loc.x){
+  //  movers[i].loc.mult(new JSVector(-2,-2));
+//
+  //}
+  //f(this.loc.x + 5 <= movers[i].loc.y || this.loc.x - 5 >= movers[i].loc.y){
+  //  movers[i].loc.div(new JSVector(2,2));
+  //}
 }
 
   this.render();
@@ -96,6 +104,10 @@ Repeller.prototype.update = function(){
   if(this.loc.y >= 0){
     this.loc.y = window.innerHeight;
   }
+  if(this.loc.x + 100 >= movers.loc.x || this.loc.y + 100 >= movers.loc.y){
+    movers.acc.sub(new JSVector(0.25,0.25));
+  }
+
   repeller.render();
 }
 

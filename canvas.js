@@ -3,6 +3,8 @@ var canvas;
 var ctx;
 var mover;
 var orbiter;
+var repeller;
+var attractor;
 function init(){
   canvas = document.getElementById('cnv')
   canvas.width = window.innerWidth;
@@ -20,7 +22,7 @@ function animate(){
   ctx.clearRect(0,0,canvas.width, canvas.height);
     mover.update();
     orbiter.update();
-
+    attractor.update(mover,true);
 }
 
 function loadMovers(){
@@ -44,6 +46,7 @@ function loadMovers(){
         var loc = new JSVector(x, y);
         var vel = new JSVector(dx, dy);
         orbiter = new Orbiter(loc, vel, randomColor(),mover, 20);
+        attractor = new Attractor(new JSVector(10, 10), new JSVector(1,1),new JSVector(1,1), 10, randomColor() );
 }
 
 function randomColor(){

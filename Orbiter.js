@@ -6,29 +6,12 @@ this.obj = obj;
 this.r = r;
 this.radiusVector = new JSVector(0,80);
 this.currentAngle = 0;
-this.currentAngleV = 0.1;
+this.currentAngleV = 1.0;
 }
 Orbiter.prototype.update = function(){
     this.currentAngle = this.currentAngle + this.currentAngleV;
-    //this.loc.y = 2 * PI * ((this.degree+1)/360)
-    //if(this.degree <= 360){
-    //  this.degree = 0;
-    //}else{
-    //  this.degree += 1;
-    //}
-    //this.loc.setDirection(this.loc.y * Math.cos(.02) - this.loc.x * Math.sin(.02));
     this.radiusVector.setDirection(this.currentAngle);
     this.loc = JSVector.addGetNew(this.radiusVector, this.obj.loc);
-
-    //length = obj.loc.getDistance(this.loc);
-    //if(length < 100){
-    //  leg = this.loc.vectorTo(obj.loc).setlength(1);
-    //  leg = leg.divide(length);
-    //  obj.acc = obj.acc.add(leg);
-
-    //}
-    //this.loc.y = this.loc.x * Math.cos(.02) + this.loc.y * Math.sin(.02);
-
     this.render();
 }
 Orbiter.prototype.render = function(){
